@@ -5,7 +5,7 @@ require 'rabbitmq/actors/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "rabbitmq-actors"
-  spec.version       = Rabbitmq::Actors::VERSION
+  spec.version       = RabbitMQ::Actors::VERSION
   spec.authors       = ["Lorenzo Tello"]
   spec.email         = ["ltello8a@gmail.com"]
 

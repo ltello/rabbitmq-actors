@@ -1,6 +1,6 @@
 require "rabbitmq/actors/version"
 
-module Rabbitmq
+module RabbitMQ
   module Actors
     # Your code goes here...
   end
