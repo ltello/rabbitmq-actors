@@ -2,31 +2,31 @@ require_relative '../../base/producer'
 
 module RabbitMQ
   module Actors
-    # A producer of messages routed to all the queues bound to the message's routing_key via matching patterns
+    # A producer of messages routed to certain queues bound based on message headers matching.
     #
     # @example
     #   RabbitMQ::Server.url = 'amqp://localhost'
     #
-    #   publisher = RabbitMQ::Actors::TopicProducer.new(topic_name: 'weather', logger: Rails.logger)
-    #   message   = { temperature: 20, rain: 30%, wind: 'NorthEast' }.to_json
-    #   publisher.publish(message, message_id: '1234837633', content_type: "application/json", routing_key: 'Europe.Spain.Madrid')
+    #   publisher = RabbitMQ::Actors::HeadersProducer.new(headers_name: 'reports', logger: Rails.logger)
+    #   message = 'A report about USA economy'
+    #   publisher.publish(message, message_id: '1234837633', headers: { type: :economy, area: 'USA'})
     #
-    class TopicProducer < Base::Producer
-      # @!attribute [r] topic_name
-      #   @return [Bunny::Exchange] the topic exchange where to publish messages.
-      attr_reader :topic_name
+    class HeadersProducer < Base::Producer
+      # @!attribute [r] headers_name
+      #   @return [Bunny::Exchange] the headers exchange where to publish messages.
+      attr_reader :headers_name
 
-      # @param :topic_name [String] name of the topic exchange where to send messages to.
+      # @param :headers_name [String] name of the headers exchange where to publish messages.
       # @option opts [String] :reply_queue_name the name of the queue where a consumer should reply.
       # @option opts [Logger] :logger the logger where to output info about this agent's activity.
-      def initialize(topic_name:, **opts)
-        super(opts.merge(topic_name: topic_name))
+      def initialize(headers_name:, **opts)
+        super(opts.merge(headers_name: headers_name))
       end
 
       # Send a message to the RabbitMQ server.
       # @param message [String] the message body to be sent.
       # @param :message_id [String] user-defined id for replies to refer to this message using :correlation_id
-      # @param :routing_key [String] send the message only to queues bound to this exchange and matching this routing_key
+      # @param :headers [Hash] send the message only to queues bound to this exchange and matching any/all of these headers.
       # @see Bunny::Exchange#publish for extra options:
       # @option opts [Boolean] :persistent Should the message be persisted to disk?. Default true.
       # @option opts [Boolean] :mandatory Should the message be returned if it cannot be routed to any queue?
@@ -41,8 +41,8 @@ module RabbitMQ
       # @option opts [Integer] :priority Message priority, 0 to 9. Not used by RabbitMQ, only applications
       # @option opts [String]  :user_id Optional user ID. Verified by RabbitMQ against the actual connection username
       # @option opts [String]  :app_id Optional application ID
-      def publish(message, message_id:, routing_key:, **opts)
-        super(message, opts.merge(message_id: message_id, routing_key: routing_key))
+      def publish(message, message_id:, headers:, **opts)
+        super(message, opts.merge(message_id: message_id, headers: headers))
       end
 
       private
@@ -50,14 +50,14 @@ module RabbitMQ
       # Sets the exchange name to connect to.
       # @see #initialize for the list of options that can be received.
       def pre_initialize(**opts)
-        @topic_name = opts[:topic_name]
+        @headers_name = opts[:headers_name]
         super
       end
 
-      # The durable RabbitMQ topic exchange where to publish messages.
+      # The durable RabbitMQ headers exchange where to publish messages.
       # @return [Bunny::Exchange]
       def exchange
-        @exchange ||= channel.topic(topic_name, durable: true)
+        @exchange ||= channel.headers(headers_name, durable: true)
       end
     end
   end

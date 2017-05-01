@@ -26,16 +26,20 @@ module RabbitMQ
                        exclusive: exclusive.present?, exclusive?: exclusive.present?, bind: :bound)
               end
 
-              allow(channel).to receive(:topic) do |name|
-                double(name: name, publish: :published, type: :topic)
+              allow(channel).to receive(:direct) do |name|
+                double(name: name, publish: :published, type: :direct)
               end
 
               allow(channel).to receive(:fanout) do |name|
                 double(name: name, publish: :published, type: :fanout)
               end
 
-              allow(channel).to receive(:direct) do |name|
-                double(name: name, publish: :published, type: :direct)
+              allow(channel).to receive(:topic) do |name|
+                double(name: name, publish: :published, type: :topic)
+              end
+
+              allow(channel).to receive(:headers) do |name|
+                double(name: name, publish: :published, type: :headers)
               end
 
               allow(RabbitMQ::Server).to receive(:connection) { connection }
