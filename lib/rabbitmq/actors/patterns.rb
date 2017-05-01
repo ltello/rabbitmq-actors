@@ -1,0 +1,1 @@
+require_relative 'patterns/master_workers/master_producer'

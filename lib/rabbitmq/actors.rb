@@ -4,6 +4,7 @@ require 'active_support/concern'
 require 'bunny'
 require_relative 'server'
 require_relative 'actors/version'
+require_relative 'actors/patterns'
 require_relative 'actors/testing'
 
 module RabbitMQ
