@@ -9,7 +9,7 @@ module RabbitMQ
     #
     #   publisher = RabbitMQ::Actors::HeadersProducer.new(headers_name: 'reports', logger: Rails.logger)
     #   message = 'A report about USA economy'
-    #   publisher.publish(message, message_id: '1234837633', headers: { type: :economy, area: 'USA'})
+    #   publisher.publish(message, message_id: '1234837633', headers: { 'type' => :economy, 'area' => 'USA'})
     #
     class HeadersProducer < Base::Producer
       # @!attribute [r] headers_name

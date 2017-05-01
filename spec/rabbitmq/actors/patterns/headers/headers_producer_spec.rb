@@ -3,7 +3,7 @@ describe RabbitMQ::Actors::HeadersProducer do
   context "headers producers are intended to be publishers of messages to a RabbitMQ system based on routing key matching patterns." do
     let(:message_id)                 { SecureRandom.hex(10) }
     let(:message)                    { 'message' }
-    let(:headers)                    { { type: :economy, area: 'usa' } }
+    let(:headers)                    { { 'type' => :economy, 'area' => 'usa' } }
     let(:headers_name)               { generate(:queue_name) }
     let(:reply_queue_name)           { generate(:queue_name) }
     let(:logger)                     { l = Logger.new(STDOUT); l.level = Logger::ERROR; l }
