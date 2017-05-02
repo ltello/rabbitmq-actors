@@ -9,14 +9,14 @@ module RabbitMQ
     # @example
     #   RabbitMQ::Server.url = 'amqp://localhost'
     #
-    #   publisher = RabbitMQ::Actors::MasterProducer.new(
-    #     queue_name:        'purchases',
-    #     auto_delete:       false,
-    #     replay_queue_name: 'confirmations',
-    #     logger:            Rails.logger)
+    #   master = RabbitMQ::Actors::MasterProducer.new(
+    #     queue_name:       'purchases',
+    #     auto_delete:      false,
+    #     reply_queue_name: 'confirmations',
+    #     logger:           Rails.logger)
     #
     #   message = { stock: 'Apple', number: 1000 }.to_json
-    #   publisher.publish(message, message_id: '1234837325', content_type: "application/json")
+    #   master.publish(message, message_id: '1234837325', content_type: "application/json")
     #
     class MasterProducer < Base::Producer
       # @param :queue_name [String] name of the durable queue where to publish messages.

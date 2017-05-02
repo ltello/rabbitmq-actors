@@ -63,8 +63,6 @@ module RabbitMQ
       # @param :topic_name   [String] name of the topic exchange this worker will receive messages.
       # @param :binding_keys [String, Array] routing key patterns this worker is interested in.
       #   Default to all: '#'
-      # @option opts [Boolean] :manual_ack to acknowledge messages to the RabbitMQ server
-      #   once executed.
       # @option opts [Proc] :on_cancellation to be executed before the worker is terminated
       # @option opts [Logger] :logger the logger where to output info about this agent's activity.
       # Rest of options required by your subclass.

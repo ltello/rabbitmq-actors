@@ -57,8 +57,6 @@ module RabbitMQ
       # @param :exchange_name [String] name of the exchange where to consume messages from.
       # @param :binding_keys  [String, Array] list of routing keys this worker is interested in.
       #   Default to all: '#'
-      # @option opts [Boolean] :manual_ack to acknowledge messages to the RabbitMQ server
-      #   once executed.
       # @option opts [Proc] :on_cancellation to be executed before the worker is terminated
       # @option opts [Logger] :logger the logger where to output info about this agent's activity.
       # Rest of options required by your subclass.

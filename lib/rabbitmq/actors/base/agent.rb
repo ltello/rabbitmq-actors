@@ -41,7 +41,7 @@ module RabbitMQ
         #
         # @option opts [String]  :queue_name the queue name to bind the agent with if any.
         # @option opts [Boolean] :exclusive (true) if the queue can only be used by this agent and
-        #   removed when the this agent's connection is closed.
+        #   removed when this agent's connection is closed.
         # @option opts [Boolean] :auto_delete (true) if the queue will be deleted when
         #   there are no more consumers subscribed to it.
         # @option opts [Logger]  :logger  the logger where to output info about agent's activity.
