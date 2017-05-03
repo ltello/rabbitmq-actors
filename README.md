@@ -598,5 +598,5 @@ Like every consumer actor, call #start! method on an instance to start listening
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[ltello]/rabbitmq-actors.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ltello/rabbitmq-actors
 
