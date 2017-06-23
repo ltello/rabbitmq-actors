@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/rabbitmq-actors.svg)](https://badge.fury.io/rb/rabbitmq-actors)
+
 # RabbitMQ::Actors
 
 rabbitmq-actors is a simple and direct way to use RabbitMQ in your Ruby applications.
