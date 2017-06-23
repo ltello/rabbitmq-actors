@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake"                   # Run scripted tasks
   spec.add_development_dependency "rspec",        "~> 3.4" # Test framework
   spec.add_development_dependency "factory_girl", "~> 4.5" # Data factories to be used in tests
-  spec.add_development_dependency "byebug",       "~> 5.0" # Debugger
+  spec.add_development_dependency "byebug",       "~> 5"   # Debugger
   spec.add_development_dependency "simplecov"              # Code coverage analyzer
 
   spec.add_runtime_dependency "activesupport", "~> 4.2" # Rails ActiveSupport
