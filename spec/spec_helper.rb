@@ -16,6 +16,19 @@
 # users commonly want.
 #
 
+require 'coveralls'
+Coveralls.wear!
+
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+])
+SimpleCov.start
+Coveralls.wear!
+
 require 'rabbitmq/actors'
 require 'factory_girl'
 
