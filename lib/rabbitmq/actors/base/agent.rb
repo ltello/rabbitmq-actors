@@ -47,10 +47,10 @@ module RabbitMQ
         # @option opts [Logger]  :logger  the logger where to output info about agent's activity.
         # Rest of options required by your subclasses.
         def initialize(**opts)
-          pre_initialize **opts
+          pre_initialize(**opts)
           set_queue(opts[:queue_name], **opts) if opts[:queue_name]
           set_logger(opts[:logger])
-          post_initialize **opts
+          post_initialize(**opts)
         end
 
         private
