@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/rabbitmq-actors.svg)](https://badge.fury.io/rb/rabbitmq-actors)
+[![Build Status](https://travis-ci.org/ltello/rabbitmq-actors.svg?branch=master)](https://travis-ci.org/ltello/rabbitmq-actors)
 
 # RabbitMQ::Actors
 
