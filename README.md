@@ -3,6 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/ltello/rabbitmq-actors/badges/gpa.svg)](https://codeclimate.com/github/ltello/rabbitmq-actors)
 [![Issue Count](https://codeclimate.com/github/ltello/rabbitmq-actors/badges/issue_count.svg)](https://codeclimate.com/github/ltello/rabbitmq-actors)
 [![Test Coverage](https://codeclimate.com/github/ltello/rabbitmq-actors/badges/coverage.svg)](https://codeclimate.com/github/ltello/rabbitmq-actors/coverage)
+[![Dependency Status](https://gemnasium.com/badges/github.com/ltello/rabbitmq-actors.svg)](https://gemnasium.com/github.com/ltello/rabbitmq-actors)
 
 # RabbitMQ::Actors
 
